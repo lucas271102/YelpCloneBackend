@@ -22,11 +22,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-const port = 8000
+const port = process.env.PORT || 8080
 app.listen(port, ()=>{
   console.log(`Server is listening on port ${port}`)
 })
 
+
+app.get('/getRestaurants', (req, res)=>{
+  res.json({
+    success: true,
+    date: new Date,
+    restaurant:'McDonald´s'
+  })
+  console.log('get all restaurants')
+})
+console.log('test')
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
