@@ -85,6 +85,12 @@ app.post("/api/v1/restaurants", async (req, res) => {
 //Update restaurants
 
 app.put("/api/v1/restaurants/:id", (req, res) => {
+
+  try {
+    const results = db.query('UPDATE restaurants SET name = $1, location = $2, price_range = $3', [req.body.name, req.body.location, req.body.price_range])
+  } catch (error) {
+    
+  }
   console.log(req.params.id);
   console.log(req.body);
   res.status(200).json({
