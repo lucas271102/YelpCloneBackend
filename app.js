@@ -7,7 +7,7 @@ require("dotenv").config();
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const db = require("./db");
-
+const cors = require('cors')
 var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
+app.use(cors())
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
